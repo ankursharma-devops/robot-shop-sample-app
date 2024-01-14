@@ -6,19 +6,19 @@ metadata:
     service: web
 spec:
   strategy:
-  canary:
-    steps:
-    - setWeight: 20
-    - pause: {duration: 10} 
-      # - analysis:
-      #     templates:
-      #     - templateName: canary-check
-    - setWeight: 40
-    - pause: {duration: 10} 
-    - setWeight: 60
-    - pause: {duration: 10} 
-    - setWeight: 80
-    - pause: {duration: 10} 
+    canary:
+      steps:
+      - setWeight: 20
+      - pause: {duration: 10} 
+      - analysis:
+          templates:
+          - templateName: canary-check
+      - setWeight: 40
+      - pause: {duration: 10} 
+      - setWeight: 60
+      - pause: {duration: 10} 
+      - setWeight: 80
+      - pause: {duration: 10} 
   replicas: 1
   selector:
     matchLabels:
