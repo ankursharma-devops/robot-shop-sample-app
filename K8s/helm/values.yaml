@@ -62,3 +62,6 @@ shipping: {}
 user: {}
 
 web: {}
+
+prometheus:
+  address: http://prometheus-operated.prom.svc:9090
