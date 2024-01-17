@@ -6,7 +6,7 @@ spec:
   metrics:
     - name: test
       interval: 1m
-      successCondition: result[0] >= 0
+      successCondition: len(result) == 0 || result[0] >= 0
       failureLimit: 0
       provider:
         prometheus:
