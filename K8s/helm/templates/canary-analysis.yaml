@@ -4,15 +4,12 @@ metadata:
   name: canary-check
 spec:
   metrics:
-  - name: test
-    provider:
-      job:
-        spec:
-          backoffLimit: 1
-          template:
-            spec:
-              containers:
-              - name: busybox
-                image: busybox
-                #args: [test]  #--> for making analysis fail, uncomment
-              restartPolicy: Never
+    - name: test
+      interval: 1m
+      successCondition: result[0] >= 0
+      failureLimit: 0
+      provider:
+        prometheus:
+          address: {{ .Values.prometheus.address }}
+          query: |
+            sum(rate(cart_value_count{service="web-canary"}[1m])) by (service)
