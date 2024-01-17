@@ -13,3 +13,4 @@ spec:
           address: {{ .Values.prometheus.address }}
           query: |
             sum(rate(cart_value_count{service="web-canary"}[1m])) by (service)
+      count: 2
