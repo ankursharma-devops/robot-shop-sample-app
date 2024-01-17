@@ -5,9 +5,9 @@ metadata:
 spec:
   metrics:
     - name: test
-      interval: 1m
+      interval: 8s
       successCondition: len(result) == 0 || result[0] >= 0
-      failureLimit: 0
+      failureLimit: 1
       provider:
         prometheus:
           address: {{ .Values.prometheus.address }}
